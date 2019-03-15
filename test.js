@@ -31,3 +31,7 @@ console.log('--------avec array');
 calcul(myArray);
 console.log('--------avec MAP()');
 calcul(myMap);
+
+let { Hunter } = require('./src/app/models.ts')
+let hunter = new Hunter()
+hunter.fight()
