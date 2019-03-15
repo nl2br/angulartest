@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Student } from '../../app/student';
+import { StudentService } from '../../app/student.service';
 
 @Component({
   selector: 'app-student',
@@ -8,20 +9,14 @@ import { Student } from '../../app/student';
 })
 export class StudentComponent implements OnInit {
 
-  students: Array<Student> = [
-    new Student('arnorld','etwillie', 16, 'S', 'Classe 1', 'abruti'),
-    new Student('émile','labille', 16, 'S', 'Classe 1', 'abruti'),
-    new Student('coquille','stjacques', 16, 'S', 'Classe 1', 'abruti'),
-    new Student('louis','futon', 16, 'S', 'Classe 1', 'abruti')
-  ]
-
+  students: Array<Student>;
   currentStudent: Student;
 
-  constructor() { }
+  constructor(studentService: StudentService) {
+    this.students = studentService.list()
+   }
 
-  ngOnInit() {
-    console.log(this.students);
-  }
+  ngOnInit() {}
 
   infoStudent(current: Student){
     this.currentStudent = current
