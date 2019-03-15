@@ -4,13 +4,14 @@
 
 <div>
   <div class="left">
-    <p *ngFor="let student of students; index as i" (click)="info(i)">
+    <p *ngFor="let student of students" (click)="infoStudent(student)">
       {{student.nom}}
     </p>
   </div>
   <div class="right">
     <div *ngIf="currentStudent">
-      {{currentStudent.prenom}}
+      <p>{{currentStudent.prenom}}</p>
+      <p>{{currentStudent.age}}</p>
     </div>
   </div>
 </div>
