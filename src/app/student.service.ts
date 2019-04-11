@@ -14,4 +14,8 @@ export class StudentService {
   list(){
     return this.listStudents;
   }
+
+  add(student: Student){
+    this.listStudents.push(student)
+  }
 }

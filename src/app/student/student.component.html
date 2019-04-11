@@ -4,11 +4,52 @@
 
 <div>
   <div class="left">
-    <input type="name" #name>
-    <button (click)="addStudent(name.value)">ADD</button>
+
+    <!-- form par le template -->
+    <form (ngSubmit)="register(userForm.value)" #userForm="ngForm">
+      <p>Formulaire par le template :</p>
+      <div>
+        <label for="name">Nom: </label>
+        <input name="name" ngModel>
+      </div>
+      <div>
+        <label for="lastname">Prénom: </label>
+        <input name="lastname" ngModel>
+      </div>
+      <button type="submit">ADD</button>
+    </form>
+    
+    <!-- form par le code -->
+    <form (ngSubmit)="formSubmit()" [formGroup]="studentForm">
+      <p>Formulaire par le code :</p>
+      <div>
+        <label for="name">Nom: </label>
+        <input formControlName="name" >
+        <div  *ngIf="nameCtrl.dirty && nameCtrl.hasError('required')"><span class="error">le nom est requis</span></div>
+        <div  *ngIf="nameCtrl.dirty && nameCtrl.hasError('minlength')"><span class="error">le nom doit avoir 10 char min</span></div>
+      </div>
+      <div>
+        <label for="lastname">Prénom: </label>
+        <input formControlName="lastname">
+        <div  *ngIf="lastnameCtrl.dirty && lastnameCtrl.hasError('required')"><span class="error">le prénom est requis</span></div>
+        <div  *ngIf="lastnameCtrl.dirty && lastnameCtrl.hasError('minlength')"><span class="error">le prénom doit avoir 10 char min</span></div>
+      </div>
+      <div>
+        <label for="age">Age: </label>
+        <input type="number" formControlName="age">
+      </div>
+      <div>
+        <label for="email">email: </label>
+        <input type="email" formControlName="email">
+        <div  *ngIf="emailCtrl.dirty && emailCtrl.hasError('email')"><span class="error">l'email n'est pas correctement écrit</span></div>
+      </div>
+      <button type="submit" [disabled]="studentForm.invalid">ADD</button>
+      <span (click)="debug()">debug</span>
+    </form>
+    
+
     <p *ngFor="let student of students" (click)="infoStudent(student)">
       {{student.nom | uppercase}}
-      
     </p>
   </div>
   
@@ -25,4 +66,21 @@
     <pre>{{students | json}}</pre>
 </div>
 
-
+<style>
+  *{
+    margin:5px
+  }
+  label{
+    display:block;
+  }
+  p{
+    font-size:19px
+  }
+  input.ng-invalid.ng-dirty{
+    border: 2px solid blue
+  }
+  .error{
+    color:red;
+    font-weight:bold;
+  }
+</style>

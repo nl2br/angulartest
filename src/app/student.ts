@@ -3,6 +3,7 @@ export class Student {
     nom: string
     prenom: string
     age: number
+    email: string
     filiere: string
     description: string
 
