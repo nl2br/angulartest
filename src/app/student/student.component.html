@@ -1,13 +1,17 @@
 <p>
   student works!
 </p>
-
+DEBUG:
+<pre>{{students | json}}</pre>
 <div>
   <div class="left">
+    <input type="name" #name>
+    <button (click)="addStudent(name.value)">ADD</button>
     <p *ngFor="let student of students" (click)="infoStudent(student)">
       {{student.nom}}
     </p>
   </div>
+  
   <div class="right">
     <div *ngIf="currentStudent">
       <p>{{currentStudent.prenom}}</p>
@@ -15,3 +19,5 @@
     </div>
   </div>
 </div>
+
+

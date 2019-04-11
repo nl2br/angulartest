@@ -6,9 +6,6 @@ export class Student {
     filiere: string
     description: string
 
-
-
-
     constructor(nom: string, prenom: string, age: number, filiere: string, nomDeClasse: string, description: string){
         this.nom = nom
         this.prenom = prenom
@@ -20,8 +17,8 @@ export class Student {
 };
 
 export const students = [
-    new Student('arnorld','etwillie', 16, 'S', 'Classe 1', 'abruti'),
+    new Student('arnorld','etwillie', 12, 'S', 'Classe 1', 'abruti'),
     new Student('émile','labille', 16, 'S', 'Classe 1', 'abruti'),
-    new Student('coquille','stjacques', 16, 'S', 'Classe 1', 'abruti'),
-    new Student('louis','futon', 16, 'S', 'Classe 1', 'abruti')
+    new Student('coquille','stjacques', 14, 'S', 'Classe 1', 'abruti'),
+    new Student('louis','futon', 15, 'S', 'Classe 1', 'abruti')
 ];

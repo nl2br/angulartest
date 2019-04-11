@@ -14,11 +14,15 @@ export class StudentComponent implements OnInit {
 
   constructor(studentService: StudentService) {
     this.students = studentService.list()
-   }
+  }
 
   ngOnInit() {}
 
   infoStudent(current: Student){
     this.currentStudent = current
+  }
+
+  addStudent(name: string){
+    this.students.push(new Student(name,"",77,"","",""))
   }
 }
