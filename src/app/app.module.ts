@@ -5,12 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PlayerComponent } from './player/player.component';
 import { StudentComponent } from './student/student.component';
+import { IsMajeurPipe } from './is-majeur.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     PlayerComponent,
-    StudentComponent
+    StudentComponent,
+    IsMajeurPipe
   ],
   imports: [
     BrowserModule,

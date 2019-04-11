@@ -17,8 +17,8 @@ export class Student {
 };
 
 export const students = [
-    new Student('arnorld','etwillie', 12, 'S', 'Classe 1', 'abruti'),
-    new Student('émile','labille', 16, 'S', 'Classe 1', 'abruti'),
-    new Student('coquille','stjacques', 14, 'S', 'Classe 1', 'abruti'),
-    new Student('louis','futon', 15, 'S', 'Classe 1', 'abruti')
+    new Student('arnorld','Etwillie', 19, 'S', 'Classe 1', 'abruti'),
+    new Student('émile','Labille', 16, 'S', 'Classe 1', 'abruti'),
+    new Student('coquille','St Jacques', 14, 'S', 'Classe 1', 'abruti'),
+    new Student('louis','Futon', 15, 'S', 'Classe 1', 'abruti')
 ];

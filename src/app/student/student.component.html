@@ -1,23 +1,28 @@
 <p>
   student works!
 </p>
-DEBUG:
-<pre>{{students | json}}</pre>
+
 <div>
   <div class="left">
     <input type="name" #name>
     <button (click)="addStudent(name.value)">ADD</button>
     <p *ngFor="let student of students" (click)="infoStudent(student)">
-      {{student.nom}}
+      {{student.nom | uppercase}}
+      
     </p>
   </div>
   
   <div class="right">
     <div *ngIf="currentStudent">
-      <p>{{currentStudent.prenom}}</p>
-      <p>{{currentStudent.age}}</p>
+        <p>{{currentStudent.prenom | lowercase}}</p>
+        <p>{{currentStudent.age | number:'.2'}}</p>
+        <p>{{currentStudent.age | isMajeur}}</p>
     </div>
   </div>
+</div>
+<div class="left">
+    DEBUG:
+    <pre>{{students | json}}</pre>
 </div>
 
 
