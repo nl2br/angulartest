@@ -1,7 +1,15 @@
+<div>
 <h2>List of student</h2>
+<div>
+  <span>Filtrer par :</span>
+  <button (click)="filterAge()">Plus de 30 ans</button>
+  <span>Afficher par :</span>
+  <button (click)="listStudentsInitial()">Initiale</button>
+  <button (click)="listStudents()">Complet</button>
+</div>
 <p *ngFor="let student of students" (click)="infoStudent(student)">
   {{student.id}}
-  <a href="" [routerLink]="['/students',student.id]" routerLinkActive #route="routerLinkActive">{{student.nom | uppercase}}</a>
+  <a href="" [routerLink]="['/students',student.id]" routerLinkActive #route="routerLinkActive">{{student.nom | uppercase}} {{student.prenom | lowercase}}</a>
 </p>
 
 <div>
@@ -9,20 +17,6 @@
   <h2>Create Student</h2>
   <div class="left">
 
-    <!-- form par le template -->
-    <form (ngSubmit)="register(userForm.value)" #userForm="ngForm">
-      <p>Formulaire par le template :</p>
-      <div>
-        <label for="name">Nom: </label>
-        <input name="name" ngModel>
-      </div>
-      <div>
-        <label for="lastname">Prénom: </label>
-        <input name="lastname" ngModel>
-      </div>
-      <button type="submit">ADD</button>
-    </form>
-    
     <!-- form par le code -->
     <form (ngSubmit)="formSubmit()" [formGroup]="studentForm">
       <p>Formulaire par le code :</p>
@@ -63,26 +57,5 @@
     </div>
   </div>
 </div>
-<div class="left">
-    DEBUG:
-    <pre>{{students | json}}</pre>
-</div>
 
-<style>
-  *{
-    margin:5px
-  }
-  label{
-    display:block;
-  }
-  p{
-    font-size:19px
-  }
-  input.ng-invalid.ng-dirty{
-    border: 2px solid blue
-  }
-  .error{
-    color:red;
-    font-weight:bold;
-  }
-</style>
+</div>

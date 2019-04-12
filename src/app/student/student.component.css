@@ -1,8 +1,16 @@
-.left{
-    width: 40%;
-    float:left;
-}
-.left{
-    width: 60%;
-    float:left;
-}
+*{
+    margin:5px
+  }
+  label{
+    display:block;
+  }
+  p{
+    font-size:19px
+  }
+  input.ng-invalid.ng-dirty{
+    border: 2px solid blue
+  }
+  .error{
+    color:red;
+    font-weight:bold;
+  }

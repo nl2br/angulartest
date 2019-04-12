@@ -9,6 +9,7 @@ import { IsMajeurPipe } from './is-majeur.pipe';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { StudentDetailsComponent } from './student-details/student-details.component';
+import { NotificationComponent } from './notification/notification.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { StudentDetailsComponent } from './student-details/student-details.compo
     StudentComponent,
     IsMajeurPipe,
     HomeComponent,
-    StudentDetailsComponent
+    StudentDetailsComponent,
+    NotificationComponent
   ],
   imports: [
     BrowserModule,

@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Student } from '../../app/student';
 import { StudentService } from '../../app/student.service';
+import { NotificationService } from '../notification.service';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { resetCompiledComponents } from '@angular/core/src/render3/jit/module';
 import { Observable } from 'rxjs';
+import { filter, map } from 'rxjs/operators';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-student',
@@ -23,7 +26,7 @@ export class StudentComponent implements OnInit {
   
 
   // executer lorsque le composant se créer
-  constructor(private studentService: StudentService, fb: FormBuilder) {
+  constructor(private studentService: StudentService, private notificationService: NotificationService, fb: FormBuilder, private title: Title) {
     // construction du formulaire
     this.nameCtrl = fb.control('', [Validators.required, Validators.minLength(10)])
     this.lastnameCtrl = fb.control('', [Validators.required, Validators.minLength(10)])
@@ -35,31 +38,57 @@ export class StudentComponent implements OnInit {
       age: this.ageCtrl,
       email: this.emailCtrl
     })
+    
   }
 
   // executer lorsque le composant est prêt
   ngOnInit() {
-    // utilisation du service pour récupérer la liste des students
+    this.listStudents()
+    this.title.setTitle("Student list")
+  }
+
+  filterAge(){
+    let temp = []
+    this.studentService.listFilter()
+      .pipe(
+        filter(item => item.age > 30)
+      )
+      .subscribe({
+        next: item => temp.push(item),
+        error: error => console.log(error),
+        complete: () => console.log('done')
+      })
+      this.students = temp
+  }
+
+  listStudents(){
     this.studentService.list().subscribe({
       next: items => this.students = items,
       error: error => console.log(error),
       complete: () => console.log('done')
     })
+  }
 
+  listStudentsInitial(){
+    let temp = []
+    this.studentService.listFilter()
+      .pipe(
+        map(item => {
+          item.nom = item.nom.substr(0,1)
+          item.prenom = item.prenom.substr(0,1)
+          return item
+        })
+      )
+      .subscribe({
+        next: item => temp.push(item),
+        error: error => console.log(error),
+        complete: () => console.log('done')
+      })
+      this.students = temp
   }
 
   infoStudent(current: Student){
     this.currentStudent = current
-  }
-
-  addStudent(name: string){
-    this.students.push(new Student(this.studentService.getNewId(),name,"",77,"","",""))
-  }
-
-  // submit pour le form par le template
-  register(user){
-    console.log('user',user)
-    this.students.push(new Student(this.studentService.getNewId(),user.name, user.lastname,77,"","",""))
   }
 
   // submit pour le form par le code
@@ -74,6 +103,7 @@ export class StudentComponent implements OnInit {
     }
     // on envoie au service
     this.studentService.add(student)
+    this.notificationService.add(`new added student ${this.studentForm.value.name}`)
     this.reset()
   }
 

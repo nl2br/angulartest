@@ -16,6 +16,10 @@ export class StudentService {
     return of(this.listStudents);
   }
 
+  listFilter():Observable<Student>{
+    return from(this.listStudents);
+  }
+
   get(id: number):Observable<Student>{
     return of(this.listStudents.find(item => item.id === id))
   }
