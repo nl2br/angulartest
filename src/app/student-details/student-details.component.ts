@@ -12,14 +12,15 @@ export class StudentDetailsComponent implements OnInit {
 
   student: Student
 
-  constructor(private studentService: StudentService,private route:ActivatedRoute) {
-
-   }
+  constructor(private studentService: StudentService,private route:ActivatedRoute) {}
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id')
-    console.log(id)
-    this.student = this.studentService.details(Number(id))
+    this.studentService.get(Number(id)).subscribe({
+      next: item => this.student = item,
+      error: error => console.log(error),
+      complete: () => console.log('done')
+    })
   }
 
 }

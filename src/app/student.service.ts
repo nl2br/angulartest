@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { students, Student } from '../app/student';
+import { from, of, Observable } from 'rxjs';
 
 
 @Injectable({
@@ -11,19 +12,20 @@ export class StudentService {
 
   constructor() {}
 
-  list(){
-    return this.listStudents;
+  list():Observable<Student[]>{
+    return of(this.listStudents);
   }
 
-  details(id: number){
-    console.log('liste',this.listStudents)
-    console.log('id',id)
-    let student = this.listStudents.filter(item => item.id === id)
-    console.log('find',this.listStudents)
-    return student[0]
+  get(id: number):Observable<Student>{
+    return of(this.listStudents.find(item => item.id === id))
   }
 
   add(student: Student){
     this.listStudents.push(student)
   }
+
+  getNewId(){
+    return this.listStudents.length + 1
+  }
+
 }
