@@ -15,6 +15,14 @@ export class StudentService {
     return this.listStudents;
   }
 
+  details(id: number){
+    console.log('liste',this.listStudents)
+    console.log('id',id)
+    let student = this.listStudents.filter(item => item.id === id)
+    console.log('find',this.listStudents)
+    return student[0]
+  }
+
   add(student: Student){
     this.listStudents.push(student)
   }

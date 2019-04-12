@@ -1,8 +1,12 @@
-<p>
-  student works!
+<h2>List of student</h2>
+<p *ngFor="let student of students" (click)="infoStudent(student)">
+  {{student.id}}
+  <a href="" [routerLink]="['/students',student.id]" routerLinkActive #route="routerLinkActive">{{student.nom | uppercase}}</a>
 </p>
 
 <div>
+
+  <h2>Create Student</h2>
   <div class="left">
 
     <!-- form par le template -->
@@ -48,9 +52,7 @@
     </form>
     
 
-    <p *ngFor="let student of students" (click)="infoStudent(student)">
-      {{student.nom | uppercase}}
-    </p>
+
   </div>
   
   <div class="right">

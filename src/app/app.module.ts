@@ -7,13 +7,17 @@ import { PlayerComponent } from './player/player.component';
 import { StudentComponent } from './student/student.component';
 import { IsMajeurPipe } from './is-majeur.pipe';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HomeComponent } from './home/home.component';
+import { StudentDetailsComponent } from './student-details/student-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PlayerComponent,
     StudentComponent,
-    IsMajeurPipe
+    IsMajeurPipe,
+    HomeComponent,
+    StudentDetailsComponent
   ],
   imports: [
     BrowserModule,

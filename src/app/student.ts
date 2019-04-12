@@ -1,4 +1,5 @@
 export class Student {
+    id:number
     nomDeClasse: string
     nom: string
     prenom: string
@@ -7,7 +8,8 @@ export class Student {
     filiere: string
     description: string
 
-    constructor(nom: string, prenom: string, age: number, filiere: string, nomDeClasse: string, description: string){
+    constructor(id:number, nom: string, prenom: string, age: number, filiere: string, nomDeClasse: string, description: string){
+        this.id = id
         this.nom = nom
         this.prenom = prenom
         this.age = age
@@ -18,8 +20,8 @@ export class Student {
 };
 
 export const students = [
-    new Student('arnorld','Etwillie', 19, 'S', 'Classe 1', 'abruti'),
-    new Student('émile','Labille', 16, 'S', 'Classe 1', 'abruti'),
-    new Student('coquille','St Jacques', 14, 'S', 'Classe 1', 'abruti'),
-    new Student('louis','Futon', 15, 'S', 'Classe 1', 'abruti')
+    new Student(1,'arnorld','Etwillie', 19, 'S', 'Classe 1', 'abruti'),
+    new Student(2,'émile','Labille', 16, 'S', 'Classe 1', 'abruti'),
+    new Student(3,'coquille','St Jacques', 14, 'S', 'Classe 1', 'abruti'),
+    new Student(4,'louis','Futon', 15, 'S', 'Classe 1', 'abruti')
 ];
