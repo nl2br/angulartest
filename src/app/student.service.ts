@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { students, Student } from '../app/student';
+import { Student } from '../app/student';
 import { from, of, Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 
 @Injectable({
@@ -8,12 +9,12 @@ import { from, of, Observable } from 'rxjs';
 })
 export class StudentService {
 
-  listStudents: Array<Student> = students;
+  listStudents: Array<Student>
 
-  constructor() {}
+  constructor(private http: HttpClient ) {}
 
   list():Observable<Student[]>{
-    return of(this.listStudents);
+    return this.http.get<Array<Student>>('fakeapi/students')
   }
 
   listFilter():Observable<Student>{

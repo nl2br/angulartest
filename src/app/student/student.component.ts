@@ -7,6 +7,7 @@ import { resetCompiledComponents } from '@angular/core/src/render3/jit/module';
 import { Observable } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 import { Title } from '@angular/platform-browser';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-student',
@@ -62,11 +63,13 @@ export class StudentComponent implements OnInit {
   }
 
   listStudents(){
+
     this.studentService.list().subscribe({
       next: items => this.students = items,
       error: error => console.log(error),
       complete: () => console.log('done')
     })
+    console.log(this.students)
   }
 
   listStudentsInitial(){

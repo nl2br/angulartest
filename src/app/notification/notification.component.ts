@@ -20,5 +20,5 @@ export class NotificationComponent implements OnInit {
     this.notificationService.clear()
     this.notifications = this.notificationService.get()
   }
-
+  
 }

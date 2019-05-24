@@ -11,6 +11,12 @@ import { HomeComponent } from './home/home.component';
 import { StudentDetailsComponent } from './student-details/student-details.component';
 import { NotificationComponent } from './notification/notification.component';
 
+// http
+import { HttpClientModule } from '@angular/common/http';
+// fake API
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService } from './in-memory-data.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,9 +31,14 @@ import { NotificationComponent } from './notification/notification.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(
+      InMemoryDataService, { dataEncapsulation: false }
+    )
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

@@ -19,9 +19,9 @@ export class Student {
     }
 };
 
-export const students = [
-    new Student(1,'arnorld','Etwillie', 34, 'S', 'Classe 1', 'abruti'),
-    new Student(2,'émile','Labille', 16, 'S', 'Classe 1', 'abruti'),
-    new Student(3,'coquille','St Jacques', 14, 'S', 'Classe 1', 'abruti'),
-    new Student(4,'louis','Futon', 56, 'S', 'Classe 1', 'abruti')
-];
+// export const students = [
+//     new Student(1,'arnorld','Etwillie', 34, 'S', 'Classe 1', 'abruti'),
+//     new Student(2,'émile','Labille', 16, 'S', 'Classe 1', 'abruti'),
+//     new Student(3,'coquille','St Jacques', 14, 'S', 'Classe 1', 'abruti'),
+//     new Student(4,'louis','Futon', 56, 'S', 'Classe 1', 'abruti')
+// ];
